@@ -1,1 +1,36 @@
+class Tetromino{
+    
+    public:
+    struct shape{
+        char name;
+        int shape[4][4];
+        
+    };
+    shape shapes[7]={
+        { 'I' , {{0,0,0,0} , {1,1,1,1} , {0,0,0,0} , {0,0,0,0} }  } , 
+        { 'O' , { {1,1,0,0} ,{1,1,0,0} , {0,0,0,0} , {0,0,0,0} } },
+        { 'S' , { {0,1,1,0}, {1,1,0,0},{0,0,0,0} , {0,0,0,0} } },
+        { 'Z' , { {1,1,0,0},{0,1,1,0},{0,0,0,0}, {0,0,0,0} } },
+        { 'J' , { {0,1,0,0},{0,1,0,0},{1,1,0,0} ,{0,0,0,0} } },
+        { 'L' , { {1,0,0,0},{1,0,0,0},{1,1,0,0}, {0,0,0,0} } },
+        { 'T' , { {1,1,1,0},{0,1,0,0},{0,0,0,0},{0,0,0,0} } }
+    };
+    shape generateTetrominoes(){
+        return shapes[rand()%7];
+    }
+    // add colour to tetrominoes
+    string getTetrominoColor(char type) {
+        switch (type) {
+            case 'I': return CYAN;      // Light Blue
+            case 'O': return YELLOW;    // Yellow
+            case 'T': return MAGENTA;   // Purple
+            case 'S': return GREEN;     // Green
+            case 'Z': return RED;       // Red
+            case 'J': return BLUE;      // Blue
+            case 'L': return WHITE;     // White
+            default: return RESET;
+        }
+    }
+    
 
+};

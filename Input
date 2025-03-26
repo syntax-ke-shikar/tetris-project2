@@ -1,0 +1,42 @@
+class Input {
+public:
+    void handleInput(int &x, int &y, Tetromino::shape &tetromino, ScoreManager &scoreManager) {
+        if (_kbhit()) {
+            char input = _getch();
+
+            if (input == 27) { // ESC key to pause
+                cout << "Game Paused!" << endl;
+                cout << "Press any key to continue..." << endl;
+                _getch(); 
+                return;
+            } else if (input == 224 || input == -32) { // Handle both standard and extended arrow key codes
+                input = _getch();
+                
+                switch(input) {
+                    case 75: // Left arrow
+                        if (!gameLogic::collided(tetromino, x - 1, y)) {
+                            x--;
+                        }
+                        break;
+                    case 77: // Right arrow
+                        if (!gameLogic::collided(tetromino, x + 1, y)) {
+                            x++; 
+                        }
+                        break;
+                    case 72: // Up arrow
+                        if (gameLogic::canRotate(tetromino, x, y)) {
+                            Tetromino::rotate(tetromino); // Rotate
+                        }
+                        break;
+                    case 80: // Down arrow
+                        if (!gameLogic::collided(tetromino, x, y + 1)) {
+                            y++; // Soft drop
+                        }
+                        break;
+                }
+            } else if (input == ' ') { // Spacebar for hard drop
+                y = gameLogic::hard_drop(x, y, tetromino, scoreManager);
+            }
+        }
+    }
+};

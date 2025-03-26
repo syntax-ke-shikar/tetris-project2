@@ -1,0 +1,94 @@
+class gameLogic {
+public:
+    bool gameOver;
+
+    gameLogic() : gameOver(false) {}
+
+    int clearFullRows(ScoreManager &scoreManager) {
+        int newRow = HEIGHT - 2;
+        int clearedRows = 0;
+
+        for (int y = HEIGHT - 2; y > 0; y--) {
+            bool full = true;
+
+            for (int x = 1; x < WIDTH-1; x++) {
+                if (gameboard::grid[y][x] == ' ') {
+                    full = false;
+                    break;
+                }
+            }
+
+            if (!full) {
+                for (int x = 0; x < WIDTH; x++) {
+                    gameboard::grid[newRow][x] = gameboard::grid[y][x];
+                }
+                newRow--;
+            } else {
+                clearedRows++;
+            }
+        }
+
+        for (int y = newRow; y >= 0; y--) {
+            for (int x = 0; x < WIDTH; x++) {
+                gameboard::grid[y][x] = ' ';
+            }
+        }
+
+        if (clearedRows > 0) {
+            scoreManager.updateScore(clearedRows);
+        }
+
+        return clearedRows;
+    }
+
+    static bool collided(Tetromino::shape &tetromino, int x, int y) {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (tetromino.states[tetromino.currState][i][j] == 0) continue;
+
+                int newX = x + j;
+                int newY = y + i;
+
+                if (newX <= 0 || newX >= WIDTH || newY >= HEIGHT-1) return true;
+                if (newY >= 0 && gameboard::grid[newY][newX] != ' ') return true;
+            }
+        }
+        return false;
+    }
+
+    static void placeTetrominoOnBoard(int x, int y, Tetromino::shape &tetromino) {
+        for (int i = 0; i < 4; i++) {
+            for (int j =0; j < 4; j++) {
+                if (tetromino.states[tetromino.currState][i][j] == 1) {
+                    int newX = x + j;
+                    int newY = y + i;
+
+                    if (newX >= 0 && newX < WIDTH && newY >= 0 && newY < HEIGHT) {
+                        gameboard::grid[newY][newX] = '#';
+                        gameboard::colorGrid[newY][newX] = Tetromino::getTetrominoColor(tetromino.name);
+                    }
+                }
+            }
+        }
+    }
+
+    bool isGameOver(int x, int y, Tetromino::shape &tetromino) {
+        return collided(tetromino, x, y);
+    }
+
+    static bool canRotate(Tetromino::shape &tetromino, int x, int y) {
+        Tetromino::shape rotatedTetromino = tetromino;
+        Tetromino::rotate(rotatedTetromino);
+        return !collided(rotatedTetromino, x, y);
+    }
+
+    static int hard_drop(int x, int y, Tetromino::shape &tetromino, ScoreManager &scoreManager) {
+        gameLogic logic;
+        while (!collided(tetromino, x, y + 1)) {
+            y++;
+        }
+        placeTetrominoOnBoard(x, y, tetromino);
+        logic.clearFullRows(scoreManager);
+        return y;
+    }
+};

@@ -1,5 +1,7 @@
 # tetris-project2
 
+# Tetris Game in C++
+
 ## Introduction
 
 This is a console-based Tetris game implemented in C++. The game features classic Tetris mechanics, including various tetromino shapes, rotation, movement, collision detection, row clearing, and score management. The game runs in the terminal and provides a simple yet engaging experience.
@@ -17,6 +19,7 @@ This is a console-based Tetris game implemented in C++. The game features classi
 - **Persistent High Score**: Saves and loads the highest score from a file.
 - **Pause and Resume**: Pressing the `ESC` key pauses the game, allowing players to resume later.
 - **Hard Drop Mechanic**: Instantly drops the current tetromino to the lowest possible position.
+- **Ghost Piece**: Shows where the tetromino will land before dropping.
 - **Console Rendering**: Uses ANSI escape codes to display the game board with color-coded tetrominoes.
 
 ---
@@ -106,6 +109,7 @@ Handles collisions, row clearing, and game-over conditions.
 - `lockPiece()`: Locks a piece into the board.
 - `clearFullRows()`: Removes full rows and shifts everything down.
 - `hardDrop()`: Instantly drops a tetromino to the lowest position.
+- `showGhostPiece()`: Displays the ghost piece position before dropping.
 
 ### 5. `Input` Class
 
@@ -129,7 +133,6 @@ The main game loop that:
 
 ## Future Improvements
 
-- **Ghost Piece**: Show where the piece will land before dropping.
 - **Different Levels**: Increase speed as the game progresses.
 - **Music and Sound Effects**: Add background music and sound cues.
 - **Multiplayer Mode**: Implement competitive Tetris gameplay.
@@ -143,4 +146,6 @@ The main game loop that:
 This project is inspired by the classic Tetris game and was built as a fun programming challenge using C++.
 
 ---
+
+
 

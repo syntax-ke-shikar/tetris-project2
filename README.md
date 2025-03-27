@@ -25,9 +25,9 @@ and score management. The game runs in the terminal and provides a simple yet en
 
 ## Screenshot
 
-![Tetris Game Screenshot](TT3.png)
-![Tetris Game Screenshot](TT4.png)
-![Tetris Game Screenshot](TT5.png)
+![Tetris Game Screenshot](TT3.jpg)
+![Tetris Game Screenshot](TT4.jpg)
+![Tetris Game Screenshot](TT5.jpg)
 
 ---
 

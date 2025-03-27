@@ -20,6 +20,7 @@ and score management. The game runs in the terminal and provides a simple yet en
 -  **Hard Drop Mechanic**: Instantly drops the current tetromino to the lowest possible position.
 -  **<u>Ghost Piece</u>**: Shows where the tetromino will land before dropping.
 - **Console Rendering**: Uses ANSI escape codes to display the game board with color-coded tetrominoes.
+- **Music and Sound Effects**: The game includes a cachy and addictive music.
 
 ---
 
@@ -141,7 +142,6 @@ The main game loop that:
 ## Future Improvements
 
 - **Different Levels**: Increase speed as the game progresses.
-- **Music and Sound Effects**: Add background music and sound cues.
 - **Multiplayer Mode**: Implement competitive Tetris gameplay.
 - **Leaderboard System**: Keep track of multiple high scores.
 - **Better UI**: Improve rendering for a more polished look.

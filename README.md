@@ -1,10 +1,9 @@
-# tetris-project2
-
 # Tetris Game in C++
 
 ## Introduction
 
-This is a console-based Tetris game implemented in C++. The game features classic Tetris mechanics, including various tetromino shapes, rotation, movement, collision detection, row clearing, and score management. The game runs in the terminal and provides a simple yet engaging experience.
+This is a console-based Tetris game implemented in C++. The game features classic Tetris mechanics, including various tetromino shapes, rotation, movement, collision detection, **# Line Clearing System**,
+and score management. The game runs in the terminal and provides a simple yet engaging experience.
 
 ---
 
@@ -14,12 +13,12 @@ This is a console-based Tetris game implemented in C++. The game features classi
 - **Multiple Tetrominoes**: Includes seven different Tetris pieces (I, O, T, S, Z, J, L) with proper rotation states.
 - **Real-Time Movement & Rotation**: Players can move and rotate tetrominoes using arrow keys.
 - **Collision Detection**: Prevents pieces from overlapping or moving out of bounds.
-- **Line Clearing System**: Rows are cleared when completely filled, awarding points.
+- ### Line Clearing System: Rows are cleared when completely filled, awarding points.
 - **Scoring System**: Tracks current and high scores with increasing rewards for multiple lines cleared at once.
-- **Persistent High Score**: Saves and loads the highest score from a file.
-- **Pause and Resume**: Pressing the `ESC` key pauses the game, allowing players to resume later.
-- **Hard Drop Mechanic**: Instantly drops the current tetromino to the lowest possible position.
-- **Ghost Piece**: Shows where the tetromino will land before dropping.
+- ### Persistent High Score: Saves and loads the highest score from a file.
+- ### Pause and Resume: Pressing the ESC key pauses the game, allowing players to resume later.
+- ### Hard Drop Mechanic: Instantly drops the current tetromino to the lowest possible position.
+- ### Ghost Piece: Shows where the tetromino will land before dropping.
 - **Console Rendering**: Uses ANSI escape codes to display the game board with color-coded tetrominoes.
 
 ---
@@ -54,10 +53,13 @@ This is a console-based Tetris game implemented in C++. The game features classi
 #### Windows:
 1. Open a terminal in the project directory.
 2. Compile the code using a C++ compiler:
+   
    ```sh
    g++ tetris.cpp -o tetris.exe
    ```
+
 3. Run the executable:
+   
    ```sh
    ./tetris.exe
    ```
@@ -65,10 +67,13 @@ This is a console-based Tetris game implemented in C++. The game features classi
 #### Linux/macOS:
 1. Open a terminal in the project directory.
 2. Compile the code using a C++ compiler:
+   
    ```sh
    g++ tetris.cpp -o tetris
    ```
+
 3. Run the executable:
+   
    ```sh
    ./tetris
    ```
@@ -77,47 +82,47 @@ This is a console-based Tetris game implemented in C++. The game features classi
 
 ## Code Structure
 
-### 1. `Tetromino` Class
+### 1. Tetromino Class
 
 Manages the shapes and rotation of tetrominoes.
 
-- `Tetromino()`: Randomly selects a new tetromino.
-- `rotate()`: Rotates the tetromino.
-- `getColor()`: Returns a color code based on the tetromino type.
+- Tetromino(): Randomly selects a new tetromino.
+- rotate(): Rotates the tetromino.
+- getColor(): Returns a color code based on the tetromino type.
 
-### 2. `GameBoard` Class
+### 2. GameBoard Class
 
 Handles rendering and storing the game grid.
 
-- `displayBoard()`: Displays the game board and the current tetromino.
-- `clearLines()`: Checks and removes full rows.
+- displayBoard(): Displays the game board and the current tetromino.
+- clearLines(): Checks and removes full rows.
 
-### 3. `ScoreManager` Class
+### 3. ScoreManager Class
 
 Manages scoring and high score storage.
 
-- `updateScore(int linesCleared)`: Updates score based on cleared lines.
-- `saveHighScore()`: Saves the highest score to a file.
-- `loadHighScore()`: Loads the highest score from a file.
-- `showScores()`: Shows the current and high scores.
+- updateScore(int linesCleared): Updates score based on cleared lines.
+- saveHighScore(): Saves the highest score to a file.
+- loadHighScore(): Loads the highest score from a file.
+- showScores(): Shows the current and high scores.
 
-### 4. `GameLogic` Class
+### 4. GameLogic Class
 
 Handles collisions, row clearing, and game-over conditions.
 
-- `checkCollision()`: Checks if a tetromino collides with existing blocks.
-- `lockPiece()`: Locks a piece into the board.
-- `clearFullRows()`: Removes full rows and shifts everything down.
-- `hardDrop()`: Instantly drops a tetromino to the lowest position.
-- `showGhostPiece()`: Displays the ghost piece position before dropping.
+- checkCollision(): Checks if a tetromino collides with existing blocks.
+- lockPiece(): Locks a piece into the board.
+- clearFullRows(): Removes full rows and shifts everything down.
+- hardDrop(): Instantly drops a tetromino to the lowest position.
+- showGhostPiece(): Displays the ghost piece position before dropping.
 
-### 5. `Input` Class
+### 5. Input Class
 
 Handles user input.
 
-- `readInput()`: Reads player keypresses and moves/rotates the tetromino accordingly.
+- readInput(): Reads player keypresses and moves/rotates the tetromino accordingly.
 
-### 6. `main()` Function
+### 6. main() Function
 
 The main game loop that:
 
@@ -146,6 +151,4 @@ The main game loop that:
 This project is inspired by the classic Tetris game and was built as a fun programming challenge using C++.
 
 ---
-
-
 

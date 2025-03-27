@@ -3,7 +3,9 @@
 #include <conio.h>
 #include <fstream>
 #include <string>
-#include <ctime>
+#include<time.h>
+
+
 using namespace std;
 
 // ANSI Color Codes for Tetrominoes
@@ -24,28 +26,45 @@ void moveCursorToTop() {
     cout << "\033[H";  // ANSI Escape Code to Move Cursor to Top
 }
 
-void showGuideMenu() {
-    system("cls");
-    cout << "\n===== TETRIS CONTROLS =====\n";
-    cout << "Left Arrow  : Move Left\n";
-    cout << "Right Arrow : Move Right\n";
-    cout << "Up Arrow    : Rotate\n";
-    cout << "Down Arrow  : Soft Drop\n";
-    cout << "Space bar   : Hard Drop\n";
-    cout << "ESC         : Pause\n";
-    cout << "\nPress any key to start...";
-    _getch();
-    system("cls");
-}
-
-bool showGameOverMenu() {
-    cout << "\n===== GAME OVER =====\n";
-    cout << "1. Restart\n";
-    cout << "2. Exit\n";
-    cout << "Enter your choice: ";
-    char choice = _getch();
-    return (choice == '1');
-}
+class userGuide{
+    public:
+    static void showGuideMenu() {
+        system("cls");
+    
+        cout << "\033[1;34m===== RULES =====\033[0m\n";
+        cout << "- Blocks (Tetrominoes) fall from the top.\n";
+        cout << "- Arrange them to form complete horizontal lines.\n";
+        cout << "- A complete line clears and earns points.\n";
+        cout << "- The game ends when blocks stack to the top.\n\n";
+    
+        cout << "\033[1;32m===== CONTROLS =====\033[0m\n";
+        cout << "Left Arrow  : Move Left\n";
+        cout << "Right Arrow : Move Right\n";
+        cout << "Up Arrow    : Rotate\n";
+        cout << "Down Arrow  : Soft Drop\n";
+        cout << "Space bar   : Hard Drop\n";
+        cout << "ESC         : Pause\n\n";
+    
+        cout << "\033[1;33m===== SCORING METHODS =====\033[0m\n";
+        cout << "- Clearing 1 line  : 100 points\n";
+        cout << "- Clearing 2 lines : 300 points\n";
+        cout << "- Clearing 3 lines : 500 points\n";
+        cout << "- Clearing 4 lines (Tetris) : 800 points\n";
+    
+        cout << "Press any key to start...";
+        _getch();
+        system("cls");
+    }
+    
+    static bool showGameOverMenu() {
+        cout << "\n\033[31m===== GAME OVER =====\033[0m\n";
+        cout << "1. Restart\n";
+        cout << "2. Exit\n";
+        cout << "Enter your choice: ";
+        char choice = _getch();
+        return (choice == '1');
+    }
+};
 
 class Tetromino {
 public:
@@ -181,7 +200,7 @@ public:
                     border += colorGrid[i][j] + char(219) + RESET;
                 } 
                 else if (isghostPiece) {
-                    border += color + char(219) + RESET; // Grey color for ghost
+                    border += color + '#' + RESET; // Grey color for ghost
                 }
                 else {
                     border += " ";
@@ -192,6 +211,11 @@ public:
         }
         cout << border;
     }
+
+    
+    
+    
+
 };
 
 char gameboard::grid[HEIGHT][WIDTH] = {};
@@ -308,7 +332,7 @@ public:
                     int newY = y + i;
 
                     if (newX >= 0 && newX < WIDTH && newY >= 0 && newY < HEIGHT) {
-                        gameboard::grid[newY][newX] = '#';
+                        gameboard::grid[newY][newX] = char(219);
                         gameboard::colorGrid[newY][newX] = Tetromino::getTetrominoColor(tetromino.name);
                     }
                 }
@@ -385,14 +409,22 @@ public:
             }
         }
     }
+
+    static void waitForInput() {
+        cout << "Press any key to continue...\n";
+        _getch();  // Waits for a single key press
+    }
 };
 
 int main() {
     srand(time(0));
+
+    
+
     bool playAgain = true;
     
     while (playAgain) {
-        showGuideMenu();
+        userGuide::showGuideMenu();
         
         gameboard board;
         gameLogic logic;
@@ -427,9 +459,12 @@ int main() {
 
         cout << "\nGame Over!\n";
         cout << "Final Score: " << scoreManager.currentScore << "\n";
-        playAgain = showGameOverMenu();
+
+        userInput.waitForInput();
+        playAgain = userGuide::showGameOverMenu();
     }
     
     cout << "\nThanks for playing!\n";
     return 0;
+    
 }

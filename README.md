@@ -13,12 +13,12 @@ and score management. The game runs in the terminal and provides a simple yet en
 - **Multiple Tetrominoes**: Includes seven different Tetris pieces (I, O, T, S, Z, J, L) with proper rotation states.
 - **Real-Time Movement & Rotation**: Players can move and rotate tetrominoes using arrow keys.
 - **Collision Detection**: Prevents pieces from overlapping or moving out of bounds.
-- ### Line Clearing System: Rows are cleared when completely filled, awarding points.
+- **Line Clearing System**: Rows are cleared when completely filled, awarding points.
 - **Scoring System**: Tracks current and high scores with increasing rewards for multiple lines cleared at once.
-- ### Persistent High Score: Saves and loads the highest score from a file.
-- ### Pause and Resume: Pressing the ESC key pauses the game, allowing players to resume later.
-- ### Hard Drop Mechanic: Instantly drops the current tetromino to the lowest possible position.
-- ### Ghost Piece: Shows where the tetromino will land before dropping.
+-  **Persistent High Score**: Saves and loads the highest score from a file.
+-  **Pause and Resume**: Pressing the ESC key pauses the game, allowing players to resume later.
+-  **Hard Drop Mechanic**: Instantly drops the current tetromino to the lowest possible position.
+-  **Ghost Piece**: Shows where the tetromino will land before dropping.
 - **Console Rendering**: Uses ANSI escape codes to display the game board with color-coded tetrominoes.
 
 ---

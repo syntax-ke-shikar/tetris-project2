@@ -18,7 +18,7 @@ and score management. The game runs in the terminal and provides a simple yet en
 -  **Persistent High Score**: Saves and loads the highest score from a file.
 -  **Pause and Resume**: Pressing the ESC key pauses the game, allowing players to resume later.
 -  **Hard Drop Mechanic**: Instantly drops the current tetromino to the lowest possible position.
--  **Ghost Piece**: Shows where the tetromino will land before dropping.
+-  **<u>Ghost Piece</u>**: Shows where the tetromino will land before dropping.
 - **Console Rendering**: Uses ANSI escape codes to display the game board with color-coded tetrominoes.
 
 ---

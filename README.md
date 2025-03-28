@@ -60,8 +60,13 @@ and score management. The game runs in the terminal and provides a simple yet en
    ```sh
    g++ tetris.cpp -o tetris.exe
    ```
+3. With music :
 
-3. Run the executable:
+   ```sh
+   g++ tetrismusic.cpp -o tetris.exe -lwinmm
+   ```
+
+4. Run the executable:
    
    ```sh
    ./tetris.exe
@@ -98,7 +103,7 @@ Manages the shapes and rotation of tetrominoes.
 Handles rendering and storing the game grid.
 
 - displayBoard(): Displays the game board and the current tetromino.
-- clearLines(): Checks and removes full rows.
+
 
 ### 3. ScoreManager Class
 
@@ -107,25 +112,34 @@ Manages scoring and high score storage.
 - updateScore(int linesCleared): Updates score based on cleared lines.
 - saveHighScore(): Saves the highest score to a file.
 - loadHighScore(): Loads the highest score from a file.
-- showScores(): Shows the current and high scores.
+- displayScores(): Shows the current and high scores.
 
 ### 4. GameLogic Class
 
 Handles collisions, row clearing, and game-over conditions.
 
-- checkCollision(): Checks if a tetromino collides with existing blocks.
-- lockPiece(): Locks a piece into the board.
+-  collided(): Checks if a tetromino collides with existing blocks or boundaries.
+- placeTetrominoOnBoard(): Locks a piece into the board.
 - clearFullRows(): Removes full rows and shifts everything down.
-- hardDrop(): Instantly drops a tetromino to the lowest position.
-- showGhostPiece(): Displays the ghost piece position before dropping.
+- hard_drop(): Instantly drops a tetromino to the lowest position.
+- canrotate():checks if the block can rotate at that position or not.
+- findGhostY():finds the y coordinate of the ghost piece.
+  
+### 5. UserGuide Class
 
-### 5. Input Class
+Displays the initial and gameOver menu.
+
+- showGuideMenu() : Prints the Start menu- rules, scoring system and game controls.
+- showGameOverMenu() : prints game over screen , with restart and exit options.
+
+### 6. Input Class
 
 Handles user input.
 
 - readInput(): Reads player keypresses and moves/rotates the tetromino accordingly.
+- waitForInput(): to create a buffer after game over.
 
-### 6. main() Function
+### 7. main() Function
 
 The main game loop that:
 
